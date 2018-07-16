@@ -1,0 +1,51 @@
+<!-- https://medium.freecodecamp.org/learn-react-js-in-5-minutes-526472d292f4 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Basics</title>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <!-- Entry for React app. Where React app will live. -->
+    <div id="root"></div>
+    
+    <!-- Where React code is written. -->
+    <script type="text/babel">
+        // This is a Component.
+        class Hello extends React.Component {
+            // Initialize State.
+            constructor(){
+                super();
+                this.state = {
+                    message: "my friend (from state)!"
+                };
+            }
+
+            updateMessage() {
+                this.setState({
+                    message: "my friend (from changed state)!"
+                });
+            }
+
+            render() {
+                // Accessing Props message.
+                // return <h1>Hello {this.props.message}!</h1>;
+                return <h1>Hello {this.state.message}!</h1>
+            }   
+        }
+
+        ReactDOM.render(
+            // Props message.
+            <Hello message="my friend"/>,
+            document.getElementById("root")
+        );
+    </script>
+</body>
+</html>
