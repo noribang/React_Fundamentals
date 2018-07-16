@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <style>
+        .round-button {
+            height: 50px;
+            width: 50px; 
+            border-radius: 25px;
+            font-size: 25px;
+        }
+    </style>
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        function Greetings(props) {
+            return (
+            <div>
+                <h1>Hello {props.name}</h1>
+                <p>Good to see you {props.age}</p>
+            </div>
+            )
+        }
+
+        class Counter extends React.Component{
+            constructor() {
+                super();
+                this.state = {
+                    count: 0,
+                    users:[]
+                }
+            }
+
+            componentDidMount() {
+                const url = 'https://api.github.com/search/users?q=eric';
+                // fetch('https://api.github.com/search/users?q=eric')
+                fetch(url)
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data.items);
+                        this.setState({users:data.items})
+                    })
+                
+            }
+
+            handleIncrease = () => {
+                // console.log("I am clicked.");
+                const newCount = this.state.count + 1;
+                this.setState({count: newCount})
+            }
+
+            handleDecrease = () => {
+                // console.log("I am clicked.");
+                const newCount = this.state.count - 1;
+                this.setState({count: newCount})
+            }
+
+            render() {
+                return (
+                    <div>
+                        <h1>Your Count {this.state.count}</h1>
+                        <button onClick={this.handleDecrease}>-</button>
+                        <button className="round-button" onClick={this.handleIncrease}>+</button>
+                        {
+                            this.state.users.map(usr => <li key={usr.id}>{usr.login}</li>)
+                        }
+                    </div>
+                );
+            }
+        }
+
+        function App() {
+            const numbers = [23, 45, 56];
+            return (
+            <div>
+                <Counter/>
+            </div>
+            )
+        }
+        
+        const root = document.getElementById('root');
+        
+        ReactDOM.render(<App></App>, root);
+
+    </script>
+</body>
+</html>
