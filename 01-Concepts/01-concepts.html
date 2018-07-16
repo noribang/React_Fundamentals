@@ -1,0 +1,92 @@
+<!-- https://reactjs.org/docs/hello-world.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01 React Concepts</title>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // 1. Simplest web page.
+        // ReactDOM.render(
+        //     <h1>Hello testing....</h1>,
+        //     document.getElementById('root')
+        // );
+
+        // 2. JSX
+        // a)
+        // const name = 'Josh Perez';
+        // // Embedded expression const name into JSX.
+        // const element = <h1>Hello, {name}...{2+2%2}...{"string"}</h1>;
+        
+        // ReactDOM.render(
+        //     element,
+        //     document.getElementById('root')
+        // );
+
+        // b)
+        // function formatName(user) {
+        //     return user.firstName + ' ' + user.lastName;
+        // }
+
+        // const user = {
+        //     firstName: 'Harper',
+        //     lastName: 'Perez'
+        // };
+
+        // const element = (
+        //     <h1>
+        //         Hello, {formatName(user)}!
+        //     </h1>
+        // );
+
+        // ReactDOM.render(
+        //     element,
+        //     document.getElementById('root')
+        // );
+
+        // c)
+        function formatName(user) {
+            return user.firstName + " " + user.lastName;
+        }
+
+        function getGreeting(user) {
+            if (user) {
+                return (
+                    <div>
+                        <h1>Hola, {formatName(user)}</h1>
+                        <h3>Hola, {formatName(user)}</h3>    
+                    </div>
+                    
+                );
+            }
+            return <h1>Hello, Stranger</h1>;
+        }
+
+        const user = {
+            firstName: "Brad",
+            lastName: "Pitt"
+        };
+
+        const element = (
+            getGreeting(user)
+        );
+
+        ReactDOM.render(
+            element,
+            document.getElementById('root')
+        );
+
+    </script>
+    
+</body>
+</html>
