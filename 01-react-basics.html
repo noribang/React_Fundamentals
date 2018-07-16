@@ -26,8 +26,10 @@
                 this.state = {
                     message: "my friend (from state)!"
                 };
+                this.updateMessage = this.updateMessage.bind(this);
             }
-
+            
+            // Change State.
             updateMessage() {
                 this.setState({
                     message: "my friend (from changed state)!"
@@ -37,7 +39,12 @@
             render() {
                 // Accessing Props message.
                 // return <h1>Hello {this.props.message}!</h1>;
-                return <h1>Hello {this.state.message}!</h1>
+                return (
+                    <div>
+                        <h1>Hello {this.state.message}!</h1>
+                        <button onClick={this.updateMessage}>Click me!</button>
+                    </div>
+                )
             }   
         }
 
