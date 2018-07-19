@@ -1,0 +1,71 @@
+<!-- https://reactjs.org/docs/add-react-to-a-website.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <!-- Root DOM node. -->
+        <div id="root"></div>
+        
+        <script type="text/babel">
+            // State and Lifecycle.
+            // **Note: Local State is only available to classes in React.
+
+            // 1.
+            // // Component.
+            // function Clock(props) {
+            //     return (
+            //         <div>
+            //             <h1>Hello, world!</h1>
+            //             <h2>It is {props.date.toLocaleTimeString()}.</h2>
+            //         </div>
+            //     );
+            // }
+            // // Access root DOM node.
+            // const root = document.getElementById('root');
+            // // Component.
+            // function tick() {
+            //     ReactDOM.render(
+            //         <Clock date={new Date()} />, 
+            //         root
+            //     );
+            // }
+
+            // setInterval(tick, 1000);
+
+            // 2. Convert Clock function into Clock class.
+            class Clock extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.state = {date: new Date()};
+                }
+                render() {
+                    return (
+                        <div>
+                            <h1>Hello, world!</h1>
+                            {/*<h2>It's {this.props.date.toLocaleTimeString()}.</h2>*/}
+                            <h2>It's {this.state.date.toLocaleTimeString()}.</h2>
+                        </div>
+                    );
+                }
+            }
+            const root = document.getElementById('root');
+            ReactDOM.render(
+                <Clock />,
+                root
+            );
+            
+
+        </script>
+
+    </body>
+</html>
