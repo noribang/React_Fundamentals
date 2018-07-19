@@ -64,7 +64,48 @@
             //     root
             // );
 
-            // 3. Lifecycle methods.
+            //// 3. Lifecycle methods.
+            // class Clock extends React.Component {
+            //     constructor(props) {
+            //         super(props);
+            //         this.state = {date: new Date()};
+            //     }
+            //     // Lifecycle hook.
+            //     componentDidMount() {
+            //         this.timerID = setInterval(
+            //             () => this.tick(),
+            //             1000
+            //         );
+            //     }
+            //     // Lifecycle hook.
+            //     componentWillUnmount() {
+            //         clearInterval(this.timerID);
+            //     }
+
+            //     tick() {
+            //         this.setState({
+            //             date: new Date()
+            //         });
+            //     }
+
+            //     render() {
+            //         return (
+            //             // JSX
+            //             <div>
+            //                 <h1>Hello, world!</h1>
+            //                 {/*<h2>It's {this.props.date.toLocaleTimeString()}.</h2>*/}
+            //                 <h2>It's {this.state.date.toLocaleTimeString()}.</h2>
+            //             </div>
+            //         );
+            //     }
+            // }
+            // const root = document.getElementById('root');
+            // ReactDOM.render(
+            //     <Clock />,
+            //     root
+            // );
+
+            // 4. Components are isolated.
             class Clock extends React.Component {
                 constructor(props) {
                     super(props);
@@ -90,6 +131,7 @@
 
                 render() {
                     return (
+                        // JSX
                         <div>
                             <h1>Hello, world!</h1>
                             {/*<h2>It's {this.props.date.toLocaleTimeString()}.</h2>*/}
@@ -98,9 +140,19 @@
                     );
                 }
             }
+
+            function App() {
+                return (
+                    <div>
+                        <Clock />
+                        <Clock />
+                    </div>
+                );
+            }
+
             const root = document.getElementById('root');
             ReactDOM.render(
-                <Clock />,
+                <App />,
                 root
             );
 
